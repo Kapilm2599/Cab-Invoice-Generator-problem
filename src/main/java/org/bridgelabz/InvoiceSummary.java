@@ -16,16 +16,13 @@ public class InvoiceSummary {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
 		InvoiceSummary summary = (InvoiceSummary) o;
-		return numberOfRides == summary.numberOfRides && Double.compare(summary.totalFare, totalFare) == 0 &&
-				Double.compare(summary.averageFarePerRide, averageFarePerRide) == 0;
-
-	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(numberOfRides, totalFare, averageFarePerRide);
+		return numberOfRides == summary.numberOfRides && Double.compare(summary.totalFare, totalFare) == 0
+				&& Double.compare(summary.averageFarePerRide, averageFarePerRide) == 0;
 	}
 
 }

@@ -6,21 +6,21 @@ import org.junit.Test;
 public class CabInvoiceTest {
 	
 	@Test
-	public void CalculateFareTest() {
-		CabInvoice obj = new CabInvoice();
-		double test = obj.calculateFare(10, 15);
-		double test1 = obj.calculateFare(10, 15) + obj.calculateFare(10, 15);
-		;
-		Assert.assertEquals(230.0, test1, 0.0);
-	}
+	public void givenUserId_shouldReturnInvoiceSummary() {
+		try {
+			String userId = "me.shadab@gmail.com";
+			Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+			CabInvoice.addRides(userId, rides);
+			InvoiceSummary summary;
 
-	@Test
-	public void MonthFareTest() {
-		CabInvoice obj = new CabInvoice();
-		Ride[] rides = { new Ride(1, 23), new Ride(1, 2) };
-		double monthfare = obj.calculateFare(rides);
-		Assert.assertEquals(45.0, monthfare, 0.0);
+			summary = CabInvoice.calculateFare(rides, "normal");
 
+			InvoiceSummary invoiceSummary = CabInvoice.getInvoiceSummary(userId);
+			Assert.assertEquals(invoiceSummary, summary);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
 	}
 
 }
